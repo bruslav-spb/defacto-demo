@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>De Facto — проверка квартиры до покупки</title>
+  <meta name="description" content="Юридическое бюро в Санкт‑Петербурге. Проверяем квартиру до покупки по 12 вопросам и каждый закрываем документом.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="De Facto">
+  <meta property="og:title" content="De Facto — проверка квартиры до покупки">
+  <meta property="og:description" content="Юридическое бюро в Санкт‑Петербурге. Проверяем квартиру до покупки по 12 вопросам и каждый закрываем документом.">
+  <!-- при публикации заменить на абсолютный адрес: соцсети относительный путь не читают -->
+  <meta property="og:image" content="img/hero-room.webp">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="img/hero-room-start.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width: 640px)">
+  <link rel="preload" href="img/hero-room.webp" as="image" type="image/webp" fetchpriority="high" media="(max-width: 639px)">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/lenis.css">
+  <script src="js/menu.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
+  <script src="js/smooth.js" defer></script>
+  <script src="js/hand-contour.js" defer></script>
+  <script src="js/hero.js" defer></script>
+  <!-- до первой отрисовки: подписи героблока ждут загрузки (js/hero.js), без JS видны сразу -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body id="top">
+
+<a class="skip-link" href="#main">К содержанию</a>
+
+<!-- 0. Шапка -->
+<header class="site-header">
+  <a class="site-header__logo" href="#top" aria-label="De Facto — в начало страницы">
+    <img src="img/logo-pechat.svg" alt="De Facto" width="189" height="56">
+  </a>
+  <nav class="site-nav" aria-label="Разделы страницы">
+    <ul class="site-nav__list">
+      <li><a class="site-nav__link" href="#check">Что входит в проверку</a></li>
+      <li><a class="site-nav__link" href="#process">Как проходит работа</a></li>
+      <li><a class="site-nav__link" href="#prices">Стоимость</a></li>
+      <li><a class="site-nav__link" href="#faq">Вопросы</a></li>
+    </ul>
+  </nav>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню">
+    <svg class="menu-toggle__open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    <svg class="menu-toggle__close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Меню" hidden>
+    <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="#check">Что входит в проверку</a></li>
+      <li><a class="mobile-menu__link" href="#process">Как проходит работа</a></li>
+      <li><a class="mobile-menu__link" href="#prices">Стоимость</a></li>
+      <li><a class="mobile-menu__link" href="#faq">Вопросы</a></li>
+    </ul>
+    <p class="mobile-menu__contact"><a href="tel:+78122441860">+7 812 244 18 60</a><span>Пн–пт, 10:00–19:00</span></p>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- 1. Героблок -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__stage">
+    <!-- Начальное состояние героблока (эталон-2, кадр AS2K2 «Hero 1440 — start v7»): комната малым кадром -->
+    <div class="hero__room" aria-hidden="true">
+      <img src="img/hero-room-start.webp" alt="" width="1200" height="800">
+      <!-- конечное состояние (кадр C9pDsY): комната, проявляется анимацией js/hero.js -->
+      <img class="hero__room-end" src="img/hero-room.webp" alt="" width="2400" height="1600" loading="lazy" decoding="async">
+      <span class="hero__room-edge"></span>
+    </div>
+    <span class="hero__room-fade hero__room-fade--down" aria-hidden="true"></span>
+    <span class="hero__room-fade hero__room-fade--up" aria-hidden="true"></span>
+    <span class="hero__end-fade" aria-hidden="true"></span>
+    <img class="hero__hand hero__hand--buyer" src="img/hand-buyer.webp" alt="Рука покупателя тянется за ключом" width="1376" height="768" fetchpriority="high">
+    <img class="hero__hand hero__hand--seller" src="img/hand-seller.webp" alt="Рука продавца протягивает ключ от квартиры" width="1376" height="768" fetchpriority="high">
+  </div>
+  <div class="hero__content">
+    <h1 class="hero__title" id="hero-title">Чистая сделка</h1>
+    <p class="hero__subtitle">Проверяем квартиру до покупки</p>
+    <div class="hero__cta">
+      <a class="btn btn--accent" href="#request">Заказать проверку</a>
+    </div>
+    <p class="hero__note">Отвечаем на один вопрос: покупать или отказаться</p>
+    <p class="hero__facts">Только факты</p>
+  </div>
+</section>
+<!-- сторож липкой панели (js/menu.js): вне pin-spacer, его верх = низ героблока -->
+<div class="hero-sentinel" aria-hidden="true"></div>
+
+<!-- 2. О бюро -->
+<section class="about" aria-labelledby="about-title">
+  <div class="container about__head">
+    <h2 class="about__label" id="about-title">О нас</h2>
+    <div class="about__text only-wide">
+      <p>Мы&nbsp;— юридическое бюро в Санкт‑Петербурге. Работаем с покупателями вторичного жилья в городе и области. Изучаем право собственности, обременения и продавца. Проверяем квартиру по 12 вопросам и каждый закрываем документом: выписки, справки, судебные картотеки, архив дома.</p>
+      <p>Ничего на веру&nbsp;— только факты.</p>
+    </div>
+    <div class="about__text only-phone">
+      <p>Мы&nbsp;— юридическое бюро в Санкт‑Петербурге. Работаем с покупателями вторичного жилья в городе и области. Изучаем право собственности, обременения и продавца.</p>
+      <p>Проверяем квартиру по 12 вопросам и каждый закрываем документом: выписки, справки, судебные картотеки, архив дома. Ничего на веру&nbsp;— только факты.</p>
+    </div>
+  </div>
+</section>
+
+<div class="approach">
+  <img class="approach__photo" src="img/meeting-room.webp" srcset="img/meeting-room-832.webp 832w, img/meeting-room.webp 1664w" sizes="(max-width: 1023px) 100vw, 1456px" alt="Светлая переговорная бюро: стол и стулья у окна" width="1664" height="640" loading="lazy">
+  <div class="approach__text">
+    <p class="approach__lead">Все тайное становится явным. Вопрос в том, когда это случится&nbsp;— до сделки или после? Мы вскроем все факты по квартире раньше, чем вы заплатите за нее деньги.</p>
+    <p class="approach__accent">Найдем и проясним проблемные пункты и сомнительные моменты, которые могут осложнить вашу жизнь после покупки.</p>
+    <p>Дадим профессиональные рекомендации и обеспечим максимальную прозрачность сделки. Если проверка пройдет чисто&nbsp;— покупайте спокойно.</p>
+  </div>
+</div>
+
+<!-- 3. Что входит в проверку -->
+<section class="section checks" id="check" aria-labelledby="check-title">
+  <div class="container">
+    <div class="section-head section-head--checks">
+      <h2 class="h1" id="check-title">Что входит в&nbsp;проверку</h2>
+      <p class="section-head__lead only-wide-block">Двенадцать вопросов, на которые мы отвечаем документом, а не словом. Ни один не пропускается&nbsp;— даже если квартира выглядит безупречно.</p>
+    </div>
+    <ol class="checks__grid">
+      <li class="check"><span class="check__num">01</span><h3 class="check__title">Право собственности продавца</h3><p class="check__text">Кто собственник по&nbsp;ЕГРН и&nbsp;на&nbsp;каком основании он получил квартиру.</p></li>
+      <li class="check"><span class="check__num">02</span><h3 class="check__title">История переходов права</h3><p class="check__text">Цепочка прошлых сделок: частые перепродажи, дарения, сделки между родственниками.</p></li>
+      <li class="check"><span class="check__num">03</span><h3 class="check__title">Обременения и аресты</h3><p class="check__text">Ипотека, залог, арест, запрет на&nbsp;регистрационные действия.</p></li>
+      <li class="check"><span class="check__num">04</span><h3 class="check__title">Зарегистрированные жильцы</h3><p class="check__text">Кто прописан в&nbsp;квартире и&nbsp;может сохранить право пользования после продажи.</p></li>
+      <li class="check"><span class="check__num">05</span><h3 class="check__title">Права детей</h3><p class="check__text">Доли несовершеннолетних, материнский капитал, согласие органов опеки.</p></li>
+      <li class="check"><span class="check__num">06</span><h3 class="check__title">Дееспособность продавца</h3><p class="check__text">Справки из&nbsp;психоневрологического и&nbsp;наркологического диспансеров, признаки оспоримой сделки.</p></li>
+      <li class="check"><span class="check__num">07</span><h3 class="check__title">Согласие супруга</h3><p class="check__text">Была ли квартира нажита в&nbsp;браке и&nbsp;нужно ли нотариальное согласие на&nbsp;продажу.</p></li>
+      <li class="check"><span class="check__num">08</span><h3 class="check__title">Наследство</h3><p class="check__text">Если квартира получена по&nbsp;наследству&nbsp;— нет ли других наследников, которые могут ее оспорить.</p></li>
+      <li class="check"><span class="check__num">09</span><h3 class="check__title">Банкротство продавца</h3><p class="check__text">Сведения о&nbsp;банкротстве: такую сделку может оспорить финансовый управляющий.</p></li>
+      <li class="check"><span class="check__num">10</span><h3 class="check__title">Суды и долги</h3><p class="check__text">Судебные споры с&nbsp;участием продавца и&nbsp;исполнительные производства.</p></li>
+      <li class="check"><span class="check__num">11</span><h3 class="check__title">Перепланировка</h3><p class="check__text">Совпадает ли квартира с&nbsp;поэтажным планом и&nbsp;техническими документами.</p></li>
+      <li class="check"><span class="check__num">12</span><h3 class="check__title">Долги по квартире</h3><p class="check__text">Задолженность за&nbsp;коммунальные услуги и&nbsp;взносы на&nbsp;капитальный ремонт.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- Полоса «архив» -->
+<div class="strip">
+  <img class="strip__photo" src="img/archive.webp" srcset="img/archive-704.webp 704w, img/archive.webp 1408w" sizes="100vw" alt="" width="1408" height="768" loading="lazy">
+  <div class="container strip__inner">
+    <p class="chip">
+      <span class="only-wide">ЕГРН&nbsp;— справки&nbsp;— судебные картотеки&nbsp;— архив дома</span>
+      <span class="only-phone">ЕГРН&nbsp;— справки&nbsp;— картотеки&nbsp;— архив</span>
+    </p>
+  </div>
+</div>
+
+<!-- 4. Цена одной непроверенной строки -->
+<section class="section section--dark risks" aria-labelledby="risks-title">
+  <div class="container risks__inner">
+    <div class="section-head">
+      <h2 class="h1" id="risks-title">Цена одной непроверенной строки</h2>
+      <p class="section-head__lead">Покупатель отвечает за прошлое квартиры, даже если не знал о нем. Суд возвращает жилье прежнему владельцу, а деньги остаются требованием к продавцу, у которого их уже нет.</p>
+    </div>
+    <ol class="risks__list">
+      <li class="risk"><span class="risk__num">01</span><h3 class="risk__title">Наследники</h3><p class="risk__text">Объявляется наследник, пропустивший срок. Сделку оспаривают через суд спустя годы после покупки.</p></li>
+      <li class="risk"><span class="risk__num">02</span><h3 class="risk__title">Скрытые жильцы</h3><p class="risk__text">Снятый с учета жилец сохраняет право пользования. Выселить его нельзя даже через суд.</p></li>
+      <li class="risk"><span class="risk__num">03</span><h3 class="risk__title">Банкротство продавца</h3><p class="risk__text">Сделку за три года до банкротства управляющий оспаривает как вывод имущества.</p></li>
+      <li class="risk"><span class="risk__num">04</span><h3 class="risk__title">Материнский капитал</h3><p class="risk__text">Не выделены доли детям. Прокуратура признает сделку недействительной.</p></li>
+    </ol>
+    <div class="next-step">
+      <p class="next-step__label">Следующий шаг&nbsp;— заявка на проверку</p>
+      <span class="next-step__line" aria-hidden="true"></span>
+      <a class="btn btn--light btn--arrow next-step__btn" href="#request">Заказать проверку
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Один случай из практики -->
+<section class="section case" id="case" aria-labelledby="case-title">
+  <div class="container">
+    <div class="section-head section-head--case">
+      <h2 class="h1" id="case-title">Один случай из&nbsp;практики</h2>
+      <p class="section-head__lead">Вместо витрины из десяти успешных сделок&nbsp;— одна история, разобранная до конца. Так понятнее, за что вы платите и почему «выписка чистая» еще ничего не значит.</p>
+    </div>
+    <div class="case__body">
+      <figure class="case__photo">
+        <img src="img/case-house.webp" srcset="img/case-house-464.webp 464w, img/case-house.webp 928w" sizes="(max-width: 1023px) 100vw, 604px" alt="Пустая комната с высоким окном во двор, лепниной и паркетом елочкой; у окна один стул" width="928" height="1136" loading="lazy">
+        <figcaption>Петроградская сторона, дом 1912 года. Квартира выглядела безупречно&nbsp;— и по документам тоже.</figcaption>
+      </figure>
+      <article class="case__story">
+        <p class="case__tag">Петроградская сторона · март 2024</p>
+        <h3 class="case__title">Наследство, которое еще не стало собственностью</h3>
+        <div class="case__paras">
+          <p>Клиент вышел на сделку за неделю до задатка. Выписка ЕГРН чистая, обременений нет, продавец&nbsp;— вежливый мужчина сорока лет с полным пакетом документов. Единственное, что нас смутило: право собственности возникло четыре месяца назад, основание&nbsp;— свидетельство о наследстве.</p>
+          <p>Мы запросили наследственное дело и нашли в картотеке районного суда иск от сестры продавца, поданный за три недели до нашей проверки. Она оспаривала завещание и просила восстановить срок принятия наследства. В ЕГРН этого не видно и не будет видно до решения суда.</p>
+          <p>Мы рекомендовали отказаться и объяснили почему: даже добросовестный покупатель в такой конфигурации рискует годами ходить по инстанциям. Клиент отказался от задатка и через месяц купил другую квартиру в соседнем доме.</p>
+        </div>
+        <div class="case__result">
+          <div class="case__result-inner">
+            <p class="case__result-label">Чем закончилось</p>
+            <p>Через семь месяцев суд отменил свидетельство о праве на наследство. Квартира вернулась в наследственную массу&nbsp;— вместе с деньгами того, кто успел ее купить.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Как проходит работа -->
+<section class="section process" id="process" aria-labelledby="process-title">
+  <div class="container">
+    <div class="section-head section-head--process">
+      <div class="section-head__title">
+        <p class="overline">Порядок работы / четыре этапа</p>
+        <h2 class="h1" id="process-title">Как проходит работа</h2>
+      </div>
+      <p class="section-head__lead">Четыре шага и один ответственный юрист на всю сделку. Вы не пересказываете историю заново каждому новому человеку и всегда знаете, на каком этапе находится проверка.</p>
+    </div>
+    <div class="steps">
+      <span class="steps__line" aria-hidden="true"></span>
+      <ol class="steps__list">
+        <li class="step step--1">
+          <span class="step__thread" aria-hidden="true"></span>
+          <div class="step__card">
+            <div class="step__tag"><span class="step__tag-num" aria-hidden="true">01</span><span class="step__tag-rule" aria-hidden="true"></span><span class="step__tag-term"><span class="visually-hidden">Срок: </span>1 день</span></div>
+            <div class="step__text"><h3 class="step__title">Заявка и документы</h3><p>Присылаете адрес и то, что уже дал продавец: выписку, паспорт, договор основания. Если на руках нет ничего&nbsp;— запрашиваем сами.</p></div>
+            <p class="step__result">Перечень документов</p>
+          </div>
+        </li>
+        <li class="step step--2">
+          <span class="step__thread" aria-hidden="true"></span>
+          <div class="step__card">
+            <div class="step__tag"><span class="step__tag-num" aria-hidden="true">02</span><span class="step__tag-rule" aria-hidden="true"></span><span class="step__tag-term"><span class="visually-hidden">Срок: </span>1–2 дня</span></div>
+            <div class="step__text"><h3 class="step__title">Запросы в реестры</h3><p>Выписки ЕГРН, судебные картотеки, банкротства, исполнительные производства, реестр уведомлений о залоге, архив дома.</p></div>
+            <p class="step__result">Реестры и архив дома</p>
+          </div>
+        </li>
+        <li class="step step--3">
+          <span class="step__thread" aria-hidden="true"></span>
+          <div class="step__card">
+            <div class="step__tag"><span class="step__tag-num" aria-hidden="true">03</span><span class="step__tag-rule" aria-hidden="true"></span><span class="step__tag-term"><span class="visually-hidden">Срок: </span>1 день</span></div>
+            <div class="step__text"><h3 class="step__title">Разбор и заключение</h3><p>Юрист сводит документы в один отчет: что подтверждено, что вызывает вопрос, что нужно сделать до подписания.</p></div>
+            <p class="step__result">Отчет 12–18 страниц</p>
+          </div>
+        </li>
+        <li class="step step--4">
+          <span class="step__thread" aria-hidden="true"></span>
+          <div class="step__card">
+            <div class="step__tag"><span class="step__tag-num" aria-hidden="true">04</span><span class="step__tag-rule" aria-hidden="true"></span><span class="step__tag-term"><span class="visually-hidden">Срок: </span>До сделки</span></div>
+            <div class="step__text"><h3 class="step__title">Сопровождение сделки</h3><p class="step__note">В тарифе «Сделка под ключ»</p><p>Правим договор, согласуем расчеты, сопровождаем подписание&nbsp;— от аванса до выписки, где собственником указаны вы.</p></div>
+            <p class="step__result">Выписка на ваше имя</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Стоимость и сроки -->
+<section class="section prices" id="prices" aria-labelledby="prices-title">
+  <div class="container">
+    <div class="section-head section-head--prices">
+      <h2 class="h1" id="prices-title">Стоимость и сроки</h2>
+      <p class="section-head__note">Цена фиксируется в договоре до начала работы. Если в ходе проверки мы находим основание отказаться от объекта&nbsp;— вы платите только за проверку и не платите за сопровождение.</p>
+    </div>
+    <div class="tariffs">
+      <div class="tariffs__head" aria-hidden="true">
+        <span class="tariffs__col tariffs__col--num">№</span>
+        <span class="tariffs__col">Тариф</span>
+        <span class="tariffs__col">Состав работ</span>
+        <span class="tariffs__col">Срок</span>
+        <span class="tariffs__col tariffs__col--price">Стоимость</span>
+      </div>
+      <article class="tariff">
+        <span class="tariff__num">01</span>
+        <div class="tariff__name">
+          <h3 class="tariff__title">Экспресс</h3>
+          <p class="tariff__note">Когда нужно быстро понять, стоит ли вносить аванс.</p>
+        </div>
+        <ul class="tariff__list">
+          <li>Выписка ЕГРН и правоустанавливающие документы</li>
+          <li>Аресты, залоги, исполнительные производства</li>
+          <li>Короткое заключение на 2 страницы</li>
+          <li>Ответы на вопросы в переписке</li>
+        </ul>
+        <p class="tariff__term"><span class="visually-hidden">Срок: </span>2 рабочих дня</p>
+        <p class="tariff__price"><span class="visually-hidden">Стоимость: </span>12 000 ₽</p>
+      </article>
+      <article class="tariff tariff--chosen">
+        <span class="tariff__num">02</span>
+        <div class="tariff__name">
+          <p class="tariff__mark">Чаще всего выбирают</p>
+          <h3 class="tariff__title">Полная проверка</h3>
+          <p class="tariff__note">Базовый формат для покупки на вторичном рынке.</p>
+        </div>
+        <ul class="tariff__list">
+          <li>Все 12 пунктов проверки объекта</li>
+          <li>Продавец: банкротство, дееспособность, семейное положение</li>
+          <li>История переходов права и архив дома</li>
+          <li>Развернутое заключение и час консультации</li>
+          <li>Рекомендации по условиям договора</li>
+        </ul>
+        <p class="tariff__term"><span class="visually-hidden">Срок: </span>4 рабочих дня</p>
+        <p class="tariff__price"><span class="visually-hidden">Стоимость: </span>24 000 ₽</p>
+      </article>
+      <article class="tariff">
+        <span class="tariff__num">03</span>
+        <div class="tariff__name">
+          <h3 class="tariff__title">Сделка под ключ</h3>
+          <p class="tariff__note">Юрист ведет сделку от аванса до ключей.</p>
+        </div>
+        <ul class="tariff__list">
+          <li>Всё из «Полной проверки»</li>
+          <li>Договор купли-продажи и авансовое соглашение</li>
+          <li>Схема расчетов: аккредитив или ячейка</li>
+          <li>Присутствие юриста на подписании</li>
+          <li>Контроль регистрации и выписка на вас</li>
+        </ul>
+        <p class="tariff__term"><span class="visually-hidden">Срок: </span>До регистрации</p>
+        <p class="tariff__price"><span class="visually-hidden">Стоимость: </span>65 000 ₽</p>
+      </article>
+      <p class="offer-line">Первичная оценка бесплатно, ответ в течение дня</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Вопросы, которые задают чаще всего -->
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="faq__panel">
+    <img class="faq__panel-photo" src="img/archive.webp" srcset="img/archive-704.webp 704w, img/archive.webp 1408w" sizes="100vw" alt="" width="1408" height="768" loading="lazy">
+    <div class="container faq__panel-inner">
+      <div class="faq__heading">
+        <p class="overline overline--brass">Вопросы и ответы</p>
+        <h2 class="h1" id="faq-title">Вопросы, которые задают чаще всего</h2>
+      </div>
+      <p class="faq__lead">Если вашего вопроса здесь нет&nbsp;— напишите, ответит юрист, а не оператор.</p>
+      <div class="faq__arch" aria-hidden="true">
+        <img class="faq__arch-photo" src="img/faq-circle.webp" alt="" width="640" height="357" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="container faq__body">
+    <div class="faq__col">
+      <details class="qa" open>
+        <summary class="qa__q"><span class="qa__num">01</span><span class="qa__text">Можно ли проверить квартиру без согласия продавца?</span><span class="qa__icon" aria-hidden="true"></span></summary>
+        <p class="qa__a">Да. Большая часть сведений открыта: ЕГРН, картотеки судов, реестр сведений о банкротстве, база исполнительных производств. От продавца нужны паспорт и документ-основание&nbsp;— адекватный продавец их показывает.</p>
+      </details>
+      <details class="qa">
+        <summary class="qa__q"><span class="qa__num">02</span><span class="qa__text">А если продавец отказывается давать документы?</span><span class="qa__icon" aria-hidden="true"></span></summary>
+        <p class="qa__a">Отказ&nbsp;— сам по себе результат проверки. Мы фиксируем его в заключении и объясняем, чем он опасен: без документа-основания невозможно проверить чистоту последнего перехода права.</p>
+      </details>
+      <details class="qa">
+        <summary class="qa__q"><span class="qa__num">03</span><span class="qa__text">Вы гарантируете, что сделку не оспорят?</span><span class="qa__icon" aria-hidden="true"></span></summary>
+        <p class="qa__a">Такую гарантию не дает никто, кто честен. Мы отвечаем за полноту проверки: если риск был виден в документах и мы его не указали&nbsp;— возмещаем убытки. Ответственность бюро застрахована на 20&nbsp;млн&nbsp;₽.</p>
+      </details>
+    </div>
+    <div class="faq__col">
+      <details class="qa">
+        <summary class="qa__q"><span class="qa__num">04</span><span class="qa__text">Работаете с ипотекой и новостройками?</span><span class="qa__icon" aria-hidden="true"></span></summary>
+        <p class="qa__a">Да. По ипотеке собираем пакет для банка и разбираем условия кредитного договора. По новостройкам проверяем застройщика, разрешение на строительство, проектную декларацию и эскроу.</p>
+      </details>
+      <details class="qa">
+        <summary class="qa__q"><span class="qa__num">05</span><span class="qa__text">Сколько стоит, если квартир несколько?</span><span class="qa__icon" aria-hidden="true"></span></summary>
+        <p class="qa__a">Каждый следующий объект в рамках одного поиска&nbsp;— минус 40% к стоимости. Обычно клиенты проверяют две-три квартиры, прежде чем выйти на сделку.</p>
+      </details>
+      <details class="qa">
+        <summary class="qa__q"><span class="qa__num">06</span><span class="qa__text">Как передаются документы и что с ними потом?</span><span class="qa__icon" aria-hidden="true"></span></summary>
+        <p class="qa__a">Через защищенную папку, ссылку присылает ваш юрист. Скан-копии храним три года&nbsp;— этого достаточно для срока оспаривания,&nbsp;— после чего удаляем. Оригиналы не запрашиваем.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Начните с одной квартиры -->
+<section class="section section--dark request" id="request" aria-labelledby="request-title">
+  <div class="container request__inner">
+    <div class="request__info">
+      <h2 class="h1" id="request-title">Начните с&nbsp;одной квартиры</h2>
+      <p class="request__lead">Пришлите адрес и ссылку на объявление. В течение дня юрист скажет, что уже видно по открытым данным, и во сколько обойдется полная проверка. Это бесплатно и ни к чему не обязывает.</p>
+      <figure class="request__photo">
+        <img src="img/courtyard.webp" srcset="img/courtyard-384.webp 384w, img/courtyard.webp 768w" sizes="(max-width: 1023px) 100vw, 640px" alt="Петербургский двор утром" width="768" height="1376" loading="lazy">
+        <figcaption>Санкт-Петербург · проверено 2026</figcaption>
+      </figure>
+      <dl class="contacts">
+        <div class="contacts__item"><dt>Телефон</dt><dd><a href="tel:+78122441860">+7 812 244 18 60</a></dd></div>
+        <div class="contacts__item"><dt>Почта</dt><dd><a href="mailto:spb@defacto.legal">spb@defacto.legal</a></dd></div>
+        <div class="contacts__item"><dt>Прием</dt><dd>наб. реки Мойки, 58, оф. 21&nbsp;— по записи</dd></div>
+      </dl>
+    </div>
+    <form class="form" id="request-form" action="#" method="post" novalidate aria-labelledby="form-title">
+      <p class="offer-line offer-line--dark">Первичная оценка бесплатно, ответ в течение дня</p>
+      <h3 class="form__title" id="form-title">Заявка на проверку</h3>
+      <div class="form__fields" id="request-fields">
+        <div class="field">
+          <label class="field__label" for="f-name">Как к вам обращаться</label>
+          <input class="field__input" id="f-name" name="name" type="text" placeholder="Ольга" autocomplete="name" aria-describedby="f-name-hint">
+          <p class="field__hint" id="f-name-hint">Необязательно</p>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-phone">Телефон или мессенджер</label>
+          <input class="field__input" id="f-phone" name="phone" type="text" placeholder="+7 ___ ___ __ __" autocomplete="tel" required aria-describedby="f-phone-hint">
+          <p class="field__hint" id="f-phone-hint" data-error="Без контакта ответить некуда">Можно ник в мессенджере</p>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-address">Адрес объекта или ссылка на объявление</label>
+          <input class="field__input" id="f-address" name="address" type="text" placeholder="Санкт-Петербург, ул. ..." required aria-describedby="f-address-hint">
+          <p class="field__hint" id="f-address-hint" data-error="Нужен адрес или ссылка">Хватит улицы и номера дома</p>
+        </div>
+        <button class="btn btn--light btn--arrow btn--block" type="submit">Отправить заявку
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <p class="form__consent">Нажимая кнопку, вы соглашаетесь на <a href="politika.html">обработку персональных данных</a>. Мы не передаем контакты агентам и застройщикам.</p>
+      </div>
+      <div class="form__done" id="request-done" role="status" tabindex="-1" hidden>
+        <p class="form__done-label">Заявка принята</p>
+        <p class="form__done-text">Юрист посмотрит открытые данные по объекту и ответит в течение рабочего дня&nbsp;— на тот контакт, который вы оставили. Если удобнее поговорить сразу: <a href="tel:+78122441860">+7&nbsp;812&nbsp;244&nbsp;18&nbsp;60</a>, пн–пт с 10:00 до 19:00.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- 10. Подвал -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__wordmark">De Facto</p>
+        <p class="footer__desc">Юридическое бюро проверки недвижимости. Санкт‑Петербург, с 2014 года.</p>
+        <p class="footer__insurance">Ответственность застрахована на 20&nbsp;млн&nbsp;₽</p>
+      </div>
+      <nav class="footer__col" aria-labelledby="footer-sections">
+        <p class="footer__col-title" id="footer-sections">Разделы</p>
+        <ul class="footer__list">
+          <li><a href="#check">Что входит в проверку</a></li>
+          <li><a href="#case">Случай из практики</a></li>
+          <li><a href="#process">Как проходит работа</a></li>
+          <li><a href="#prices">Стоимость и сроки</a></li>
+          <li><a href="#faq">Вопросы и ответы</a></li>
+          <li><a href="#request">Заявка на проверку</a></li>
+        </ul>
+      </nav>
+      <div class="footer__col">
+        <p class="footer__col-title">Связь</p>
+        <ul class="footer__list">
+          <li><a href="tel:+78122441860">+7 812 244 18 60</a></li>
+          <li><a href="mailto:spb@defacto.legal">spb@defacto.legal</a></li>
+          <li><a href="https://t.me/defacto_spb" target="_blank" rel="noopener">Телеграм</a></li>
+          <li><a href="https://yandex.ru/maps/?text=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%2C%20%D0%BD%D0%B0%D0%B1.%20%D1%80%D0%B5%D0%BA%D0%B8%20%D0%9C%D0%BE%D0%B9%D0%BA%D0%B8%2C%2058" target="_blank" rel="noopener">наб. реки Мойки, 58</a></li>
+          <li>Пн–пт, 10:00–19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2014–2026 ООО «Де Факто», ИНН&nbsp;7801416920</p>
+      <a class="footer__policy" href="politika.html">Политика обработки персональных данных</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
